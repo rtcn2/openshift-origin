@@ -70,4 +70,7 @@ EOF
 
 fi
 
+# Install Java (for metrics)
+yum -y install java-1.8.0-openjdk-headless
+
 echo $(date) " - Script Complete"
