@@ -384,10 +384,10 @@ openshift_disable_check=disk_availability,memory_availability
 # default selectors for router and registry services
 openshift_router_selector='type=infra'
 openshift_registry_selector='type=infra'
-openshift_metrics_install_metrics=true
-openshift_metrics_cassandra_storage_type=dynamic
-openshift_logging_install_logging=true
-openshift_logging_storage_kind=dynamic
+#openshift_metrics_install_metrics=true
+#openshift_metrics_cassandra_storage_type=dynamic
+#openshift_logging_install_logging=true
+#openshift_logging_storage_kind=dynamic
 
 openshift_master_cluster_method=native
 openshift_master_cluster_hostname=$MASTERPUBLICIPHOSTNAME
