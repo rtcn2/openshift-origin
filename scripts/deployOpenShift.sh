@@ -370,6 +370,7 @@ ansible_become=yes
 openshift_install_examples=true
 openshift_deployment_type=origin
 openshift_release=v3.7
+openshift_additional_repos=[{'id': 'origin-3.7', 'name': 'origin-3.7', 'baseurl': 'https://gcsweb-ci.svc.ci.openshift.org/gcs/origin-ci-test/branch-logs/origin/v3.7.0/builds/test_branch_origin_extended_conformance_gce/2001/artifacts/rpms/', 'enabled': 1, 'gpgcheck': 0}]
 docker_udev_workaround=True
 openshift_use_dnsmasq=True
 openshift_master_default_subdomain=$ROUTING
