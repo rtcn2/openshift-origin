@@ -350,7 +350,7 @@ cat > /home/${SUDOUSER}/deletestucknodes.yml <<EOF
     command: oc delete node {{inventory_hostname}}
     delegate_to: ${MASTER}-0
     notify:
-      - restart origin-node
+    - restart origin-node
 
   - name: sleep between deletes
     pause:
