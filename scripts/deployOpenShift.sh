@@ -340,13 +340,22 @@ cat > /home/${SUDOUSER}/deletestucknodes.yml <<EOF
   become: yes
   vars:
     description: "Delete stuck nodes"
+  handlers:
+  - name: restart origin-node
+    systemd:
+      state: restarted
+      name: origin-node
   tasks:
   - name: Delete stuck nodes so it can recreate itself
     command: oc delete node {{inventory_hostname}}
     delegate_to: ${MASTER}-0
+    notify:
+      - restart origin-node
+
   - name: sleep between deletes
     pause:
       seconds: 25
+  post_tasks:
   - name: set masters as unschedulable
     command: oadm manage-node {{inventory_hostname}} --schedulable=false
 EOF
