@@ -185,6 +185,7 @@ cat > /home/${SUDOUSER}/setup-azure-master.yml <<EOF
           "subscriptionID" : "{{ g_subscriptionId }}",
           "tenantID" : "{{ g_tenantId }}",
           "resourceGroup": "{{ g_resourceGroup }}",
+          "location": "{{ g_location }}",
         }
     notify:
     - restart origin-master-api
@@ -251,6 +252,7 @@ cat > /home/${SUDOUSER}/setup-azure-node-master.yml <<EOF
           "subscriptionID" : "{{ g_subscriptionId }}",
           "tenantID" : "{{ g_tenantId }}",
           "resourceGroup": "{{ g_resourceGroup }}",
+          "location": "{{ g_location }}",
         }
     notify:
     - restart origin-node
@@ -306,6 +308,7 @@ cat > /home/${SUDOUSER}/setup-azure-node.yml <<EOF
           "subscriptionID" : "{{ g_subscriptionId }}",
           "tenantID" : "{{ g_tenantId }}",
           "resourceGroup": "{{ g_resourceGroup }}",
+          "location": "{{ g_location }}",
         }
     notify:
     - restart origin-node
@@ -351,11 +354,11 @@ cat > /home/${SUDOUSER}/deletestucknodes.yml <<EOF
     delegate_to: ${MASTER}-0
     notify:
     - restart origin-node
-
+  post_tasks:
   - name: sleep between deletes
     pause:
       seconds: 25
-  post_tasks:
+
   - name: set masters as unschedulable
     command: oadm manage-node {{inventory_hostname}} --schedulable=false
 EOF
